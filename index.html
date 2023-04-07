@@ -48,7 +48,7 @@
       }
     </style>
   </head>
-  <body>
+  <body onload="generateChallenge()">
     <header>
       <h1>Music Challenge Generator</h1>
     </header>
@@ -61,7 +61,7 @@
         <br>No more getting stuck in a loop searching for the perfect snare or hi-hat.
         <br>Music Challenge Generator has got you covered! Try it out now and take your songwriting to the next level!
       </p>
-      <button onclick="generateChallenge()">Generate Challenge</button>
+      <button onclick="generateChallenge()">Generate New Challenge</button>
       <h3>
         Write a <span id="mood"></span>-song in the key of <span id="key"></span> and tempo <span id="tempo"></span> BPM.
         You have <span id="time"></span> minutes to complete it. Good luck!
