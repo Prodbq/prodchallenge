@@ -1,98 +1,89 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Musiccreator Challenge Generator</title>
+    <title>Music Challenge Generator</title>
     <style>
       body {
         font-family: Arial, sans-serif;
-        background-color: #f8f8f8;
         margin: 0;
         padding: 0;
       }
-      #container {
-        width: 80%;
-        margin: 0 auto;
-        text-align: center;
-        background-color: #fff;
+      header {
+        background-color: #003366;
+        color: white;
         padding: 20px;
-        box-shadow: 0px 2px 5px #888888;
-        border-radius: 10px;
+        text-align: center;
       }
       h1 {
-        color: #333;
-        margin-top: 0;
+        margin: 0;
       }
-      #result {
-        font-size: 30px;
+      main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 80vh;
+      }
+      button {
         margin-top: 20px;
-        margin-bottom: 40px;
-      }
-      #button {
-        background-color: #333;
-        color: #fff;
-        border: none;
         padding: 10px 20px;
-        font-size: 20px;
+        font-size: 1.2rem;
+        background-color: #003366;
+        color: white;
+        border: none;
         border-radius: 5px;
         cursor: pointer;
-        margin-bottom: 20px;
       }
-      #button:hover {
-        background-color: #555;
+      button:hover {
+        background-color: #006699;
+      }
+      footer {
+        background-color: #f0f0f0;
+        color: #333;
+        padding: 20px;
+        text-align: center;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
       }
     </style>
   </head>
-<body>
-    <h1>Music Challenge Generator</h1>
-    Introducing Music Challenge Generator - the ultimate tool to get your creative juices flowing! Say goodbye to writer's block and endless searching for the perfect beat or melody. With Music Challenge Generator, you'll be able to quickly generate BPM, Mood, Challenge Time, and Key for your next masterpiece. This tool is designed to help you get into the groove and keep the creative process moving forward. No more getting stuck in a loop searching for the perfect snare or hi-hat. Music Challenge Generator has got you covered! Try it out now and take your songwriting to the next level!<br>
-    <div id="container">
-      <label>
-        BPM:
-        <span id="bpm"></span>
-      </label>
-      <label>
-        Mood:
-        <span id="mood"></span>
-      </label>
-      <label>
-        Challenge time:
-        <span id="time"></span>
-      </label>
-      <label>
-        Key:
-        <span id="key"></span>
-      </label>
-      <button id="generate">Generate Challenge</button>
-    </div>
+  <body>
+    <header>
+      <h1>Music Challenge Generator</h1>
+    </header>
+    <main>
+      <p>
+        <span id="mood"></span>-song in the key of <span id="key"></span> and tempo <span id="tempo"></span> BPM.
+        You have <span id="time"></span> minutes to complete it. Good luck!
+      </p>
+      <button onclick="generateChallenge()">Generate Challenge</button>
+    </main>
+    <footer>
+      <p>This page was created with the help of ChatGPT.</p>
+    </footer>
     <script>
       function getRandomInt(min, max) {
         return Math.floor(Math.random() * (max - min + 1)) + min;
       }
-      
-      function getRandomMood(moods) {
-        return moods[Math.floor(Math.random() * moods.length)];
+
+      function getRandomElement(array) {
+        return array[Math.floor(Math.random() * array.length)];
       }
 
       function generateChallenge() {
-        const bpm = getRandomInt(80, 190);
-        const moods = ['happy', 'sad', 'angry', 'relaxed', 'energetic', 'romantic', 'melancholy', 'hopeful'];
-        const mood = getRandomMood(moods);
-        const times = [10, 15, 20, 30];
-        let time = getRandomMood(times);
-        const genres = ['Acoustic', 'Electronic', 'Rock', 'Jazz', 'Pop'];
-        const genre = getRandomMood(genres);
-        if (genre === 'Acoustic' && time < 15) {
-          time = 15;
-        }
+        const moods = ['happy', 'sad', 'angry', 'relaxed'];
         const keys = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
-        const key = getRandomMood(keys);
-        document.getElementById('bpm').textContent = bpm;
+        const times = [10, 15, 20, 30];
+        const tempo = getRandomInt(80, 190);
+        const mood = getRandomElement(moods);
+        const key = getRandomElement(keys);
+        const time = getRandomElement(times);
         document.getElementById('mood').textContent = mood;
-        document.getElementById('time').textContent = time + ' minutes';
         document.getElementById('key').textContent = key;
+        document.getElementById('tempo').textContent = tempo;
+        document.getElementById('time').textContent = time;
       }
-
-      document.getElementById('generate').addEventListener('click', generateChallenge);
     </script>
   </body>
 </html>
