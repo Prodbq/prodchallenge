@@ -17,7 +17,13 @@
       h1 {
         margin: 0;
       }
-
+      main {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        height: 80vh;
+      }
       button {
         margin-top: 20px;
         padding: 10px 20px;
@@ -55,11 +61,12 @@
         <br>No more getting stuck in a loop searching for the perfect snare or hi-hat.
         <br>Music Challenge Generator has got you covered! Try it out now and take your songwriting to the next level!
       </p>
-      <button onclick="generateChallenge()">Generate New Challenge</button>
+      
       <h3>
         Write a <span id="mood"></span>-song in the key of <span id="key"></span> and tempo <span id="tempo"></span> BPM.
         You have <span id="time"></span> minutes to complete it. Good luck!
       </h3>
+      <button onclick="generateChallenge()">Generate New Challenge</button>
       
     </main>
     <footer>
