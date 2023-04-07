@@ -42,29 +42,56 @@
       }
     </style>
   </head>
-  <body>
+<body>
+    <h1>Music Challenge Generator</h1>
     <div id="container">
-      <h1>Music Challenge Generator</h1>
-      <p>Click the button below to generate a music challenge:</p>
-      <p id="result"></p>
-      <button id="button" onclick="generateChallenge()">Generate Challenge</button>
+      <label>
+        BPM:
+        <span id="bpm"></span>
+      </label>
+      <label>
+        Mood:
+        <span id="mood"></span>
+      </label>
+      <label>
+        Challenge time:
+        <span id="time"></span>
+      </label>
+      <label>
+        Key:
+        <span id="key"></span>
+      </label>
+      <button id="generate">Generate Challenge</button>
     </div>
-
     <script>
-      function generateChallenge() {
-        var bpm = Math.floor(Math.random() * 111) + 80; // Random number between 80 and 190
-        var genres = ["Hiphop", "Trap", "Rock", "Rnb", "Ballad", "Disco", "Dark", "K-pop", "J-Pop", "C-Pop", "Lo-Fi", "House", "Acoustic", "Synthwave"];
-        var genre = genres[Math.floor(Math.random() * genres.length)]; // Random genre from the array
-        var challengeTimes = [10, 15, 20, 30];
-        var challengeTime = challengeTimes[Math.floor(Math.random() * challengeTimes.length)]; // Random challenge time
-        if (genre === "Acoustic" && challengeTime < 15) {
-          challengeTime = 15;
-        }
-        var keys = ["A", "Bb", "B", "C", "C#", "D", "Eb", "E", "F", "F#", "G", "Ab"];
-        var key = keys[Math.floor(Math.random() * keys.length)]; // Random key
-        var result = `BPM: ${bpm} | Genre: ${genre} | Challenge Time: ${challengeTime} minutes | Key: ${key}`;
-        document.getElementById("result").innerHTML = result;
+      function getRandomInt(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
       }
+      
+      function getRandomMood(moods) {
+        return moods[Math.floor(Math.random() * moods.length)];
+      }
+
+      function generateChallenge() {
+        const bpm = getRandomInt(80, 190);
+        const moods = ['happy', 'sad', 'angry', 'relaxed', 'energetic', 'romantic', 'melancholy', 'hopeful'];
+        const mood = getRandomMood(moods);
+        const times = [10, 15, 20, 30];
+        let time = getRandomMood(times);
+        const genres = ['Acoustic', 'Electronic', 'Rock', 'Jazz', 'Pop'];
+        const genre = getRandomMood(genres);
+        if (genre === 'Acoustic' && time < 15) {
+          time = 15;
+        }
+        const keys = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
+        const key = getRandomMood(keys);
+        document.getElementById('bpm').textContent = bpm;
+        document.getElementById('mood').textContent = mood;
+        document.getElementById('time').textContent = time + ' minutes';
+        document.getElementById('key').textContent = key;
+      }
+
+      document.getElementById('generate').addEventListener('click', generateChallenge);
     </script>
   </body>
 </html>
