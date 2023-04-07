@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Music Challenge Generator</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f8f8f8;
+        margin: 0;
+        padding: 0;
+      }
+      #container {
+        width: 80%;
+        margin: 0 auto;
+        text-align: center;
+        background-color: #fff;
+        padding: 20px;
+        box-shadow: 0px 2px 5px #888888;
+        border-radius: 10px;
+      }
+      h1 {
+        color: #333;
+        margin-top: 0;
+      }
+      #result {
+        font-size: 30px;
+        margin-top: 20px;
+        margin-bottom: 40px;
+      }
+      #button {
+        background-color: #333;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        font-size: 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-bottom: 20px;
+      }
+      #button:hover {
+        background-color: #555;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <h1>Music Challenge Generator</h1>
+      <p>Click the button below to generate a music challenge:</p>
+      <p id="result"></p>
+      <button id="button" onclick="generateChallenge()">Generate Challenge</button>
+    </div>
+
+    <script>
+      function generateChallenge() {
+        var bpm = Math.floor(Math.random() * 111) + 80; // Random number between 80 and 190
+        var genres = ["Hiphop", "Trap", "Rock", "Rnb", "Ballad", "Disco", "Dark", "K-pop", "J-Pop", "C-Pop", "Lo-Fi", "House", "Acoustic", "Synthwave"];
+        var genre = genres[Math.floor(Math.random() * genres.length)]; // Random genre from the array
+        var challengeTimes = [10, 15, 20, 30];
+        var challengeTime = challengeTimes[Math.floor(Math.random() * challengeTimes.length)]; // Random challenge time
+        if (genre === "Acoustic" && challengeTime < 15) {
+          challengeTime = 15;
+        }
+        var keys = ["A", "Bb", "B", "C", "C#", "D", "Eb", "E", "F", "F#", "G", "Ab"];
+        var key = keys[Math.floor(Math.random() * keys.length)]; // Random key
+        var result = `BPM: ${bpm} | Genre: ${genre} | Challenge Time: ${challengeTime} minutes | Key: ${key}`;
+        document.getElementById("result").innerHTML = result;
+      }
+    </script>
+  </body>
+</html>
